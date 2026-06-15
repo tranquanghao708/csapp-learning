@@ -1,5 +1,5 @@
-# Tin-học-đại-cương
-đây là tin học đại cương, chứa các tài liệu liên quan và note, writeup bằng chứng chứng minh với reverse egineering trên hệ thống thật
+# CS-APP là gì
+đây là một cuốn sách về CSAPP, tôi được một anh sinh viên đại học giới thiệu nên. Cuốn sách này hoàn toàn là tiếng anh, việc đọc nó sẽ khá nhằn nếu bạn là một người đam mê về tin học, công nghệ thì repo này dành cho bạn
 
 # Nghĩa là gì?
 
