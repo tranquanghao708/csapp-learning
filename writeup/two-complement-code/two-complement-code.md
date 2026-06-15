@@ -4,9 +4,11 @@
 
 - 1.Mã bù hai
 
-	- 1.1.Mã bù hai là gì và nguyên lý?
+	- 1.1.Mã bù hai là gì ?
 
-	- 1.2.
+	- 1.2. Cách đọc bit parrent sang số nguyên ?
+
+	- 1.3.
 
 - 2.Tràn số
 
@@ -18,7 +20,7 @@
 
 - là cách biểu diễn signed của trọng số MSB luôn là số âm. Nghĩa là, nếu `MSB = 1` đó là số âm còn `MSB = 0` thuộc miền không âm (số 0) hoặc dương
 
-**nguyên lý**
+**1.2. Cách đọc bit parrent sang số nguyên ?**
 
 ![alt text](image0.png)
 
