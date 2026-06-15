@@ -1,10 +1,17 @@
-# CS-APP là gì
-đây là một cuốn sách về CSAPP, tôi được một anh sinh viên đại học giới thiệu nên.
+# CS:APP là gì?
 
-# Nghĩa là gì?
+Đây là một cuốn sách về khoa học máy tính mà tôi được một anh sinh viên đại học giới thiệu. Nội dung của cuốn sách chủ yếu tập trung vào cách chương trình được thực thi và vận hành bên trong máy tính.
 
-ở đây tôi sẽ chia sẻ các bài học mà tôi đang được học từ các tại liệu, video v.v. lên đây theo hiểu biết của tôi, ngoài lý thuyết ra thì tôi sẽ chứng minh nó, chứng minh những con số nó hoạt động có đúng theo tiêu chuẩn IEEE v.v. hay có hoạt động và vận hành đúng như cái CSAPP này nó nói hay không bằng kỹ năng dịch ngược của tôi và ví dụ phân tích một chương trình chạy bằng ngôn ngữ C hay hợp ngữ assembly để đảm bảo tính chính xác và xác thực
+# Mục đích của repository này
 
-# Cuốn sách này dạy về gì
+Tại đây tôi sẽ ghi lại những gì mình học được từ CS:APP cùng với các tài liệu, bài viết và video liên quan. Các nội dung được trình bày theo cách hiểu của tôi.
 
-theo cá nhân tôi mà nói, nó tập trung dạy về cách tư duy hệ thống. Nghĩa là, nó ít hoặc không dạy bạn về lập trình thay vào đó nó sẽ dạy bạn cách tư duy như một hệ thống vận hành thế nào dưới lớp mặt nạ của chương trình được gầy dựng lên những ngôn ngữ cấp trên, nó có hợp ngữ và có vài chủ đề liên quan tới tin học đại cương, kiến trúc máy tính cơ bản cho bạn có thể hiểu được nền tảng gì và những gì đang thực sự chạy khi chương trình bạn biên dịch là đang thực thi trên hệ thống của bạn.
+Ngoài phần lý thuyết, tôi sẽ sử dụng các ví dụ thực tế, chương trình viết bằng C, hợp ngữ (Assembly), cùng các kỹ thuật phân tích và dịch ngược để kiểm chứng những kiến thức được đề cập trong sách, chẳng hạn như biểu diễn số nguyên, số thực theo chuẩn IEEE 754, cách dữ liệu được lưu trữ trong bộ nhớ, hay cách chương trình được thực thi trên hệ thống.
+
+# Cuốn sách này dạy gì?
+
+Theo quan điểm của tôi, CS:APP chủ yếu dạy tư duy hệ thống.
+
+Thay vì tập trung vào việc dạy lập trình, cuốn sách giải thích cách các thành phần bên dưới chương trình hoạt động, từ dữ liệu ở mức bit, bộ nhớ, hợp ngữ, tiến trình, liên kết chương trình cho đến các khái niệm cơ bản về hệ điều hành và kiến trúc máy tính.
+
+Mục tiêu của cuốn sách là giúp người đọc hiểu điều gì thực sự diễn ra khi một chương trình được biên dịch và thực thi trên máy tính.
