@@ -1,5 +1,5 @@
 # CS-APP là gì
-đây là một cuốn sách về CSAPP, tôi được một anh sinh viên đại học giới thiệu nên. Cuốn sách này hoàn toàn là tiếng anh, việc đọc nó sẽ khá nhằn nếu bạn là một người đam mê về tin học, công nghệ thì repo này dành cho bạn
+đây là một cuốn sách về CSAPP, tôi được một anh sinh viên đại học giới thiệu nên.
 
 # Nghĩa là gì?
 
@@ -8,7 +8,3 @@
 # Cuốn sách này dạy về gì
 
 theo cá nhân tôi mà nói, nó tập trung dạy về cách tư duy hệ thống. Nghĩa là, nó ít hoặc không dạy bạn về lập trình thay vào đó nó sẽ dạy bạn cách tư duy như một hệ thống vận hành thế nào dưới lớp mặt nạ của chương trình được gầy dựng lên những ngôn ngữ cấp trên, nó có hợp ngữ và có vài chủ đề liên quan tới tin học đại cương, kiến trúc máy tính cơ bản cho bạn có thể hiểu được nền tảng gì và những gì đang thực sự chạy khi chương trình bạn biên dịch là đang thực thi trên hệ thống của bạn.
-
-Nếu bạn theo dịch ngược hay muốn trở nên chuyên nghiệp hơn khi làm việc với đoạn mã cấp trên ?
-
-- right, cuốn này là không thể thiếu
