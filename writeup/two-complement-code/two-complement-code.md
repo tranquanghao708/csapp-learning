@@ -4,9 +4,9 @@
 
 - 1.[Mã bù hai](#mã-bù-hai)
 
-	- 1.1.Mã bù hai là gì ?
+	- 1.1.Mã bù hai là gì ? (Two's Complement Encodings, 2.2.3 trang 99,100)
 
-	- 1.2.Cách đọc bit parrent sang số nguyên ?
+	- 1.2.Cách đọc bit parrent sang số nguyên ? (Unsigned Encodings, 2.2.2 trang 97,98)
 
 	- 1.3.Miền giá trị biểu diễn được
 
@@ -14,7 +14,7 @@
 
 	- 1.3.2.Debug chương trình C
 
-	- 1.4.Chuyển đổi giữa unsigned và signed
+	- 1.4.Chuyển đổi giữa unsigned và signed (Conversions Between Signed and Unsigned, 2.2.4 trang 105,106)
 
 	- 1.5.Vì sao gọi là mã bù hai?
 
