@@ -174,4 +174,41 @@ tương tự với nhiều kiểu dữ liệu có dấu khác:
 
 **1.3.2.Debug chương trình C**
 
-chúng ta cùng debug nó xem cái gì nó đang thực sự diễn ra bên trong.
+chúng ta cùng debug nó xem cái gì nó đang thực sự diễn ra bên trong. Ở đây, chúng ta dùng công cụ GDB để debug từng dòng assemly :
+
+> gdb -q test_type
+
+và
+
+> start
+
+xong lệnh start nó sẽ thực thi tới đầu main nếu program còn symbol và chưa bị strip hoàn toàn 
+
+![alt text](image9.png)
+
+ở đoạn disassembly, chúng ta thấy pwndbg nó có hiện sẵn các vaddr và hexdecimal, tính cộng như trong ảnh
+
+![alt text](image10.png)
+
+để có bằng chứng chương trình thực hiện đúng cơ chế và lý thuyết y như CSAPP nói và output thì chúng ta soi kỹ cách disassembly được đưa ra từ gdb nó cộng lại như thế nào và hoạt động nhị phân nó ra làm sao ở đây dựa trên các đoạn hợp ngữ trong ảnh, chúng ta chú ý tới phần này :
+
+```asm
+   0x555555555147 <main+14>    movzx  eax, word ptr [rbp - 2]        EAX, [0x7fffffffe54e] => 0x7fff
+   0x55555555514b <main+18>    add    eax, 1                         EAX => 0x8000 (0x7fff + 0x1)
+   0x55555555514e <main+21>    mov    word ptr [rbp - 2], ax         [0x7fffffffe54e] <= 0x8000
+```
+
+ở đây tại instrution `0x5147` ta thấy thanh ghi eax hiện tại đang chứa `0x7fff` chính là Tmax của kiểu dữ liệu 16 bit, để kết luận 0x7fff chính xác là Tmax thì ta có bằng chứng như sau :
+
+![alt text](image11.png)
+
+bạn nhìn thấy nó là một dãy `111111111111111` và hiểu lầm MSB = 1 rồi mà đúng không? thực chất là chưa, giờ đây tới lượt instrution `0x514e` ta thấy sau khi nó cộng một đơn vị thì nó có giá trị `0x8000` đó chính là Tmin của binary 16bit, chứng minh nó là Tmin ta có bằng chứng như sau: 
+
+![alt text](image12.png)
+
+giờ đây bạn thấy điều gì lạ không, chúng ta lấy output ở ảnh 0x8000 là `1000000000000000` đi so sánh với ảnh trước là `111111111111111`, bạn thấy nó chênh lệch 1 đơn vị và phần `111111111111111` nó thấp hơn 1 đơn vị. Để dễ dàng cho việc so sánh tôi sẽ sắp xếp nó :
+
+| Tmax | 111111111111111|
+|------|----------------|
+| Tmin |1000000000000000|
+        ^-------------------phần này chênh lệch 1 bit
