@@ -300,3 +300,31 @@ For example, consider the following code:
 > When run on a two’s-complement machine, it generates the following output:
 
 > v = -12345, uv = 53191
+
+Chúng ta có thể hiểu theo minh họa là, khi ta khai báo cái biến `v` với số âm = -12345 thì nó vẫn là số âm, nhưng khi ta ép nó sang unsigned là `unsigned short uv = (unsigned short) v;` thì nó chuyển sang gía trị khác là số dương nhưng số bit vẫn giữ nguyên. Vậy bằng chứng nào mà tôi dám nói số bit giữ nguyên? tôi sẽ chứng minh nó. Ở đây sách đã cho output và đoạn mã, tôi sẽ thử thực thi lại xem ra output terminal và chứng minh nó :
+
+> phần chứng minh, nó có thể hơi ngoài lề bạn có thể bỏ qua
+
+<details>
+	<summary>Chứng minh</summary>
+
+code của tôi lấy cảm hứng ví dụ như trong code minh họa CS:APP cung cấp :
+
+```c
+#include <stdio.h>
+
+int main(void){
+
+	short int v = -12345;
+ 	unsigned short uv = (unsigned short) v; // code y nguyên như trong sách 
+	printf("v = %d, uv = %u\n", v, uv);
+
+	return 0;
+}
+```
+
+> gcc -o test_type test_type.c
+
+![alt text](image17.png)
+
+</details>
