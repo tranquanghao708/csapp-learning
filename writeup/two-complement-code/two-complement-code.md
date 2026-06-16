@@ -163,6 +163,15 @@ int main(void){
 
 Nó hoạt động đúng như những gì mà sách nói cũng như kỳ vọng của tôi, ở đây theo chuẩn CPU hầu hết các thiết bị hiện đại thì nó đều dùng bù hai nên như bạn thấy trong ảnh là kết quả đúng là Tmin của 16bit, nhưng với theo cách nhìn của lập trình C điều này là UB vì phép toán này thuộc nhóm signed overflow
 
+tương tự với nhiều kiểu dữ liệu có dấu khác:
+
+| Kiểu        | Bit | Tmin                 | Tmax                |
+| ----------- | --- | -------------------- | ------------------- |
+| signed char | 8   | -128                 | 127                 |
+| short       | 16  | -32768               | 32767               |
+| int         | 32  | -2147483648          | 2147483647          |
+| long long   | 64  | -9223372036854775808 | 9223372036854775807 |
+
 **1.3.2.Debug chương trình C**
 
 chúng ta cùng debug nó xem cái gì nó đang thực sự diễn ra bên trong.
