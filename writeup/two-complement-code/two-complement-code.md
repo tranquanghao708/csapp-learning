@@ -265,3 +265,7 @@ ví dụ tôi cho nó là kiểu `a` đi, kiểu `a` có 4 bit là `0000 -> 1111
 chúng ta tiếp tục `ni` và output sẽ giống y chang :
 
 ![alt text](image15.png)
+
+vì đơn giản đó là Tmin theo signed, và khi MSB = 1 rồi thì mọi con số đều là âm hết nếu theo hệ bù hai signed 
+
+**1.4.Chuyển đổi giữa unsigned và signed**
