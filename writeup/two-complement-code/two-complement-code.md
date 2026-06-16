@@ -222,4 +222,11 @@ chúng ta thấy có một điểm lạ, tại sao nó lại thêm `0xffff` vào
 
 **1.3.3.Tại sao call printf() nhưng transmit vào lại thêm 0xffff?**
 
+> đoạn này giải thích câu hỏi và thiên hướng về C có thể hơi ngoài lệ, bạn có thể bỏ qua nếu không quan tâm tới
+
+<details>
+	<summary>Lý do C lại thêm 0xffff</summary>
+
 - Bởi vì trong C có cơ chế interger promotion, khi ta truyền type short vào printf, nó sẽ tự động ép sang kiểu int. Mà, tại vì sao mà nó phải làm vậy?
+
+</details>
