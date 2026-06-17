@@ -365,7 +365,7 @@ từ đó cũng như thế thôi, bit nhị phân vẫn y nguyên là nó. Cách
 trong CSAPP có đề cập tới hai khái niệm này. T2U có nghĩa là chuyển số có dấu signed sang số không dấu unsigned 
 
 ```mermaid
-flowchart TD
+flowchart LR
 	A[số có dấu <br>signed</br>] -->|-1| B{T2U covert}
 	B -->|11111111| C[số không dấu <br>unsigned</br>]
 ```
