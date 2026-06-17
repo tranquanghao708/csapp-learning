@@ -404,10 +404,6 @@ flowchart LR
     A([Số không dấu <br><b>Unsigned</b>]) -->|Đầu vào| B{Quá trình <br><b>U2T Convert</b>}
     B -->|Đầu ra| C[Số có dấu <br><b>Signed / Bù 2</b>]
 
-    style A fill:#2ecc71,stroke:#27ae60,stroke-width:2px,color:#fff
-    style B fill:#e67e22,stroke:#d35400,stroke-width:2px,color:#fff
-    style C fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff
-
     linkStyle 0 stroke:#e67e22,stroke-width:3px,stroke-dasharray: 5, animation: action 1s linear infinite;
     linkStyle 1 stroke:#3498db,stroke-width:3px,stroke-dasharray: 5, animation: action 1s linear infinite;
 ```
