@@ -261,6 +261,8 @@ ví dụ tôi cho nó là kiểu `a` đi, kiểu `a` có 4 bit là `0000 -> 1111
 
 điều kiện để sign extension nó làm việc là MSB = 1 còn nếu MSB = 0 thì đó là của zero extension làm việc, nếu sign nó kéo dài với bit 1 thì zero kéo dài với bit 0 thôi
 
+![alt text](image24.png)
+
 </details>
 
 chúng ta tiếp tục `ni` và output sẽ giống y chang :
