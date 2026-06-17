@@ -398,7 +398,7 @@ trong đó x là số bit , nếu như x mà nhỏ hơn Tmax của binary thì g
 
 còn mà nếu tôi dùng số nguyên bé hơn Tmax của binary thì không được, ví dụ tôi có số nguyên là 100 bé hơn `2**(N-1) = 2**(16-1) = 32768` thì thử tính :
 
-100 - 2^{16} = -65436 (rõ ràng là sai hoàn toàn dù vẫn là convert nhưng kết quả nó bị sai)
+$$100 - 2^{16} = -65436$$ (rõ ràng là sai hoàn toàn dù vẫn là convert nhưng kết quả nó bị sai)
 
 Nên là hai cái U2T và T2U đều có điều kiện rõ ràng mới có thể tính ra kết quả chính xác được
 
