@@ -370,13 +370,13 @@ trong đó x là giá trị số nguyên N là số bit `2**N` là biểu thức
 
 số bit của short như tôi đề cập là 16bit, vậy tôi biết số có dấu Tmin của cái 16bit này là `-2(N - 1) = -32768` do `-32768` hoàn toàn bé hơn `0` nên bây giờ tôi muốn chuyển chúng sang hệ không dấu unsigned thì tôi dùng biểu thức T2U :
 
-(-32768) + 2^{16} = 32768
+$$(-32768) + 2^{16} = 32768$$
 
  còn nếu mà số nguyên như 100 lớn hơn 0 thì giữ nguyên, không tính. Nó sẽ là kết quả bị sai dù covert đúng hay không nhưng về bản chất là sai hoàn toàn, không phải vì biểu thức sai mà vì điều kiện không cho phép áp dụng biểu thức với điều đó
 
 Vậy ví dụ tôi thử tính xem chuyện gì xảy ra biết rõ ràng 100 lớn hơn 0, điều kiện ko cho phép vậy tôi vẫn cứ tính xem có gì?
 
-100 + 2^{16} = 65636 (kết quả bị sai dù covert đúng)
+$$100 + 2^{16} = 65636$$ (kết quả bị sai dù covert đúng)
 
 ![alt text](image22.png)
 
@@ -384,17 +384,17 @@ Bạn thấy số đã chuyển sang số không dấu unsigned hoàn toàn
 
 còn U2T thì ngược lại thôi, nó chuyển unsigned sang signed công thức của nó là :
 
-nếu `x < 2**(N-1)` thì
+nếu x < $$2^(N-1)$$ thì
     giữ nguyên
 
-nếu `x >= 2**(N-1)` thì
-    x - 2**N
+nếu x >= $$2^(N-1)$$ thì
+    $$x - 2^N$$
 
 trong đó x là số bit , nếu như x mà nhỏ hơn Tmax của binary thì giữ nguyên còn mà nếu x mà lớn hơn Tmax của binary thì dùng công thức U2T .Ví dụ với cái bit như trên là 16 bit đi :
 
 ở đây cho x = 32768 , 32768 hoàn toàn bằng với `2**(N-1) = 2**(16-1) = 32768` lúc này ta mới dùng biểu thức U2T :
 
-32768 - 2^{16} = -32768 (Bạn thấy nó đã covert sang âm)
+$$32768 - 2^{16} = -32768$$ (Bạn thấy nó đã covert sang âm)
 
 còn mà nếu tôi dùng số nguyên bé hơn Tmax của binary thì không được, ví dụ tôi có số nguyên là 100 bé hơn `2**(N-1) = 2**(16-1) = 32768` thì thử tính :
 
