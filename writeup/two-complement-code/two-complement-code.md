@@ -364,7 +364,7 @@ trong CSAPP có đề cập tới hai khái niệm này vậy tôi cần biết 
 
 nếu **x < 0** thì
 
- $$x + 2^{N}$$
+ $$\Large x + 2^{N}$$
 
 nếu **x >= 0** thì
 
@@ -390,10 +390,12 @@ Bạn thấy số đã chuyển sang số không dấu unsigned hoàn toàn
 còn U2T thì ngược lại thôi, nó chuyển unsigned sang signed công thức của nó là :
 
 nếu x < $$\Large2^{N-1}$$ thì
+
     giữ nguyên
 
 nếu x >= $$\Large2^{N-1}$$ thì
-    $$\Largex - 2^N$$
+
+    $$\Large x - 2^N$$
 
 trong đó x là số bit , nếu như x mà nhỏ hơn Tmax của binary thì giữ nguyên còn mà nếu x mà lớn hơn Tmax của binary thì dùng công thức U2T .Ví dụ với cái bit như trên là 16 bit đi :
 
