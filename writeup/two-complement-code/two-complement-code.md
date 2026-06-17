@@ -12,8 +12,6 @@
 
 	- 1.3.1.Áp dụng thử vào C
 
-	- 1.3.2.Debug chương trình C
-
 	- 1.4.Chuyển đổi giữa unsigned và signed (Conversions Between Signed and Unsigned, 2.2.4 trang 105,106)
 
 	- 1.5.Vì sao gọi là mã bù hai?
@@ -175,8 +173,10 @@ tương tự với nhiều kiểu dữ liệu có dấu khác:
 | int         | 32  | -2147483648          | 2147483647          |
 | long long   | 64  | -9223372036854775808 | 9223372036854775807 |
 
-**1.3.2.Debug chương trình C**
+> Debug chương trình C, nếu bạn ko quan tâm có thể bỏ qua
 
+<details>
+	<summary>Debug program C</summary>
 chúng ta cùng debug nó xem cái gì nó đang thực sự diễn ra bên trong. Ở đây, chúng ta dùng công cụ GDB để debug từng dòng assemly :
 
 > gdb -q test_type
@@ -269,7 +269,9 @@ chúng ta tiếp tục `ni` và output sẽ giống y chang :
 
 ![alt text](image15.png)
 
-vì đơn giản đó là Tmin theo signed, và khi MSB = 1 rồi thì mọi con số đều là âm hết nếu theo hệ bù hai signed 
+vì đơn giản đó là Tmin theo signed, và khi MSB = 1 rồi thì mọi con số đều là âm hết nếu theo hệ bù hai signed
+ 
+</details>
 
 **1.4.Chuyển đổi giữa unsigned và signed**
 
