@@ -389,27 +389,27 @@ Bạn thấy số đã chuyển sang số không dấu unsigned hoàn toàn
 
 còn U2T thì ngược lại thôi, nó chuyển unsigned sang signed công thức của nó là :
 
-nếu x < $$\Large2^{N-1}$$ thì
+nếu **x <** $$\Large2^{N-1}$$ thì
 
-    giữ nguyên
+giữ nguyên
 
-nếu x >= $$\Large2^{N-1}$$ thì
+nếu **x >=** $$\Large2^{N-1}$$ thì
 
 $$\Large x - 2^N$$
 
-trong đó x là số bit , nếu như x mà nhỏ hơn Tmax của binary thì giữ nguyên còn mà nếu x mà lớn hơn Tmax của binary thì dùng công thức U2T .Ví dụ với cái bit như trên là 16 bit đi :
+trong đó x là **số bit** , nếu như x mà **nhỏ hơn Tmax** của binary thì giữ nguyên còn mà nếu x mà **lớn hơn Tmax** của binary thì dùng công thức U2T .Ví dụ với cái bit như trên là 16 bit đi :
 
-ở đây cho x = 32768 , 32768 hoàn toàn bằng với $$\Large2^{N-1} = 2^{16-1} = 32768$$ lúc này ta mới dùng biểu thức U2T :
+ở đây cho x = 32768 , 32768 **hoàn toàn bằng** với $$\Large2^{N-1} = 2^{16-1} = 32768$$ lúc này ta mới dùng biểu thức U2T :
 
 $$\huge32768 - 2^{16} = -32768$$ **(Bạn thấy nó đã covert sang âm)**
+
+![alt text](image23.png)
 
 còn mà nếu tôi dùng số nguyên bé hơn Tmax của binary thì không được, ví dụ tôi có số nguyên là 100 bé hơn $$\Large2^{N-1} = 2^{16-1} = 32768$$ thì thử tính :
 
 $$\huge100 - 2^{16} = -65436$$ **(rõ ràng là sai hoàn toàn dù vẫn là convert nhưng kết quả nó bị sai)**
 
 Nên là hai cái U2T và T2U đều có điều kiện rõ ràng mới có thể tính ra kết quả chính xác được
-
-![alt text](image23.png)
 
 Bạn thấy nó đã chuyển lại sang âm rồi, vậy tôi cũng đang thắc mắc là chúng ta có thể thêm âm thủ công được mà? cần gì tới mấy công thức này cho rườm rà, vậy mục đích của CSAPP muốn dạy chúng ta là mấy biểu thức này và liệu nó có tác dụng gì?
 
