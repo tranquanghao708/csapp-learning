@@ -259,17 +259,6 @@ Còn float thì bị ép thành double. Vậy ép xong rồi sao nó thêm `ffff
 
 ví dụ tôi cho nó là kiểu `a` đi, kiểu `a` có 4 bit là `0000 -> 1111`, bây giờ tôi cho kiểu `a` có giá trị là $$\LargeTmin = -2^{N-1}$$ là `1000` đó là hình hài bit của nó. Vậy khi kiểu `a` ta ép kiểu nó sang kiểu `b` và kiểu b 8 bit (gấp đôi bit kiểu a) thì lúc này độ rộng toán hạng của nó là `11111000`. Đó là lý do đợt chạy debug vừa rồi nó thêm `0xffff` vì kiểu `short` theo quy định của C nó được ép sang kiểu `int` mà int gấp đôi short là 4 byte trong khi short có 2 byte thôi 
 
-```mermaid
-flowchart TD
-	A[cho 8 bit gốc lúc đầu] --> |10000000|B{nếu bit gốc có MSB = 1}
-	B-->C{sign extension kéo độ rộng toán hạng của bit gốc thêm 4}
-	C-->|111110000000|D[kết quả]
-flowchart LR
-	B-->|Nếu bit có MSB = 0|E{zero extension kéo độ rộng toán hạng của bit gốc thêm 4}
-flowchart TD
-	E-->|ví dụ bit mẫu là : 0000010000|F[kết quả]
-```
-
 điều kiện để sign extension nó làm việc là MSB = 1 còn nếu MSB = 0 thì đó là của zero extension làm việc, nếu sign nó kéo dài với bit 1 thì zero kéo dài với bit 0 thôi
 
 </details>
