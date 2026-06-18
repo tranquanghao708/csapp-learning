@@ -1,0 +1,18 @@
+
+;; Function main (main, funcdef_no=0, decl_uid=3431, cgraph_uid=1, symbol_order=0)
+
+int main ()
+{
+  int D.3437;
+
+  <bb 2> :
+  __builtin_puts (&"ko h\xe1\xbb\xa3p l\xe1\xbb\x87, l\xe1\xbb\x97i di\xe1\xbb\x85n gi\xe1\xba\xa3i"[0]);
+  D.3437 = 0;
+
+  <bb 3> :
+<L3>:
+  return D.3437;
+
+}
+
+
