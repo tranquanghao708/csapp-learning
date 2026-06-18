@@ -20,7 +20,7 @@
 
 	- 1.5.Vì sao gọi là mã bù hai?
 
-- [2.Tràn số](#tràn-số)
+- 2.[Tràn số](#tràn-số)
 
 # Mã bù hai
 
