@@ -546,11 +546,13 @@ int main(void){
 
 ![alt text](image33.png)
 
-chúng ta quan sát, thấy in ra từ hợp lệ. Vậy điều kiện `-1 > 1U` hay `-1 < 1U` compiler ép kiểu -1 sang unsigned, do -1 là signed MSB là `1111111` kiểu thế, thì nó là số âm nhưng khi bị ép sang hệ không dấu unsigned thì lúc này nó sẽ ra số nguyên = $$\Large2^N-1$$ bao quát toàn bộ dãy binary. Nên `-1` thành số lớn hơn rất nhiều ví dụ :
+chúng ta quan sát, thấy in ra từ hợp lệ. Vậy điều kiện `-1 > 1U` hay `-1 < 1U` thì khi biên dịch, compiler sẽ đổi cách đọc nó sẽ dựa trên tiêu chuẩn C để đổi cách đọc `-1` hệ có dấu sang hệ không dấy , lúc này nó là số âm nhưng khi bị ép sang hệ không dấu unsigned thì nó sẽ ra số nguyên dương = $$\Large2^N-1$$ bao quát toàn bộ dãy binary. Nên `-1` thành số lớn hơn rất nhiều ví dụ :
 
-- short 2byte là 16bit, điều kiện so sánh là `-1 < 1U`, compiler ép `-1` sang usigned gọi là `(unsigned)-1 < 1U` lúc này 16 bit có số nguyên bằng $$\Large2^{16}-1 = 65535$$ thì ta đang so sánh `65535 < 1` nên điều kiện luôn sai
+- ta có một đoạn mã C nhưng nó khai báo short 2byte là 16bit, điều kiện so sánh là `-1 < 1U`, compiler ép `-1` sang usigned gọi là `(unsigned)-1 < 1U` lúc này 16 bit có số nguyên bằng $$\Large2^{16}-1 = 65535$$ thì ta đang so sánh `65535 < 1` nên điều kiện luôn sai. Thì hai đoạn trên cũng thế, chỉ là compiler và chuẩn C sẽ thực hiện ép sang int thôi.
 
 ![alt text](image34.png)
+
+Vậy vai trò của T2U và U2T ở đây là gì? có hai đoạn mã vậy chúng ta có thể vận dụng nó vào đó như thế nào?
 
 </details>
 
