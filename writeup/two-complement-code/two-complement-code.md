@@ -566,11 +566,26 @@ chúng ta quan sát, thấy in ra từ hợp lệ. Vậy điều kiện `-1 > 1U
 
 **1.5.Vì sao gọi là mã bù hai?**
 
-- Lúc đầu người ta tạo ra `mã bù một` nghĩa là phải đảo bit và cộng lại. Ví dụ lấy `5 + (-5)` thì 5 có binrary là `0000101` và (-5) thì đảo bit lại là `1111010` và lấy hai phép đó cộng lại :
+- Lúc đầu người ta tạo ra `mã bù một` loại mã bù một này diễn giải số âm bằng cách đảo bit . Ví dụ lấy `5 + (-5)` thì 5 có binrary là `0000101` và (-5) thì đảo bit lại là `1111010` và lấy hai phép đó cộng lại :
 
 | số 5 | 0000101 |
 |------|---------|
 | số (-5) sau khi đảo bit | 1111010 |
 | kết quả cộng lại | 1111111 |
 
-- nó không ra 0, kết quả đã sai rồi còn phải cộng thêm carry quay về rất phiền
+nó không ra 0, kết quả đã sai rồi còn phải cộng thêm carry quay về rất phiền
+
+- Sau đó, họ quyết định thử thêm sẳn cộng 1 vào xem thế nào. Ở đây, họ đảo bit và sau đó cộng thêm 1 ngay khi tạo số âm :
+
+| số 5 | 0000101 |
+|------|---------|
+| số (-5) sau khi đảo bit | 1111010 |
+| kết quả sau khi cộng thêm 1 | 1111011 |
+| kết quả cộng lại | 10000000 |
+
+
+bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
+
+> Phần này chủ yếu là lịch sử của bù hai
+
+# 2.Tràn số
