@@ -666,6 +666,42 @@ kết quả sẽ bằng 1 tại bit bên ngoài thật sự đã bị bỏ rồi
 
 <details>
 	<summary>áp dụng với C</summary>
+Do hệ thống thực là 64bit nó quá lớn so với nhu cầu nên chúng ta sẽ thực hiện vận dụng các bit có hạn trong các kiểu dữ liệu để thực hiện hiện tượng này. Ở đây, chúng ta dùng short 2 byte, ta cho đoạn code C như sau :
+
+```c
+#include <stdio.h>
+
+short luy_thua(short input, short intput_two){
+	short temp = 1;
+	for(int i = 1 ; i <= intput_two; i++){
+	 temp *= input; //intput * 1 -> giữ nguyên nhân tiếp lần lượt là 2 - 3 - 4 
+	} 
+	return temp;
+}
+
+int main(void){
+	short a = 1; //lúc này ở đây, chúng ta thấy theo hệ nhị phân là 0000000000000001 . Vẫn chưa tràn bit unsigend overflow
+
+	a ^= a; //chúng ta dọn dẹp nó, ở đây bạn có thể gán 0 vô cũng được nhưng tus thích xor nó hơn
+
+	a = luy_thua(2 , 15); // đây mới xảy ra hiện tượng, hệ nhị phân là 10000000000000000 quá số bit, bây giờ in ra xem hiện tượng nó cắt byte như nào
+
+	printf("%d\n",a); //ở đây in ra nhé
+
+	a ^= a;
+
+	a = luy_thua(2 , 16+16); //tus nhớ short theo chuẩn C sẽ bị ép kiểu sang int và sign extension ra vậy để phòng ngừa, ta nên cộng thêm vô cho int
+
+	printf("%d\n",a); //kết quả gần như chắc chắn sẽ xảy ra theo kỳ vọng
+
+	return 0;
+}
+```
+
+> gcc -o test_type test_type.c ; ./test_type
+
+![alt text](image38.png)
+
 </details>
 
 **2.1.1.2 cờ CF (carry flag)**
