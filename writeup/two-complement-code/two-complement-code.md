@@ -739,6 +739,8 @@ int main(void){
 }
 ```
 
+Bạn có thể dùng echo để tính ra với các công thức cho nhanh nếu đây là một bài thử nghiệm, lúc đó tôi hơi ngáo nên mò thuật toán cả tiếng đồng hồ
+
 > gcc -o test_type test_type.c ; ./test_type
 
 ![alt text](image38.png)
@@ -749,7 +751,40 @@ Chúng ta thấy output của cả hai đều là 0, vậy chứng tỏ nó đã
 
 <details>
 	<summary>Vì sao cả hai kiểu dữ liệu là 0? chả nhẽ nó đã sign extension rồi à?</summary>
-- Trước hết là chúng ta debug chương trình đã 
+- Trước hết là chúng ta debug chương trình đã, ở đây ta sẽ dùng gdb để debug nó xem cái gì đã được transmit vào ở các thanh ghi.
+
+> gdb -q test_type
+
+và 
+
+> start
+
+![alt text](image42.png)
+
+bây giờ chúng ta đang ở main, sau khi đã được cấp phát xong bộ nhớ nói chung lưu rbp và cấp phát stack nói riêng. Ở đây, chúng ta sẽ `ni` tới phần printf chúng ta hoàn toàn bỏ qua phần lũy thừa, mục đích chính của chúng ta là soi kỹ sự chênh lệch và khác biệt giữa short và int để trả lời cho câu hỏi trên
+
+> ni
+
+![alt text](image43.png)
+
+ở đây ta quan sát, nó không thực hiện phép tính nào như đợt debug trước kia là `0xffff..` thay vào đó nó gắn thẳng là 0 ở rsi luôn, khả năng cao là compiler đã tối ưu hóa rồi. Vậy còn nốt phần int, chúng ta tiến hành debug nốt
+
+> ni
+
+![alt text](image44.png)
+
+Khoan, ta bắt gặp hiện tượng là tại sao cái hàm `luy_thua()` vốn dĩ nó chỉ có slot cho 2 argument nhưng sao cái này đâu ra hai thanh ghi rdx và rcx đây?
+
+> phần trả lời câu hỏi tham số luy_thua, bạn có thể bỏ qua khi ko quan tâm tới
+<details>
+	<summary>vì sao lại có hai thanh ghi rdx và rcx</summary>
+</details>
+
+![alt text](image45.png)
+
+ở đây, chúng ta thấy cái phần printf() nốt còn lại vẫn tương tự như lần trước. Vậy vấn đề là tại sao nó lại gắn trực tiếp thẳng vào không như lần trước là nó lại sign extension ra và short không được nâng thành int nữa à? , chúng ta cần debug sâu hơn nữa ở đây chúng ta thử trích xuất hết tất cả file logs khi biên dịch bằng compiler ra xem sao.
+
+
 </details>
 
 </details>
