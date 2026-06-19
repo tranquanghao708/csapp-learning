@@ -635,11 +635,42 @@ bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
 
 - biểu thức $$\Large2^{N}$$ chúng ta đã nhắc nhiều ở mục trên rồi ví dụ nó giúp tính giá trị số bit bằng vị trí bit thì ở đây nó lại giúp chúng ta nhìn thấy hiện tượng unsigned overflow vượt quá giới hạn bit mà hệ thống hỗ trợ như thế nào, ví dụ hệ thống archlinux là 64bit đi thì ta dùng :
 
-$$\Large2^{64} = 0$$
+$$\huge2^{64} = 0$$
 
 ![alt text](image35.png)
 
-tại sao lại bằng 0?, do là chúng ta đã nhìn thấy hiện tượng unsigned overflow bây giờ hãy giải thích tại sao nó lại bằng 0. Cho ví dụ, hệ thống mới của chúng ta là 4 bit `0000 -> 1111` bây giờ tính $$\Large2^{4} = 10000$$, ta quan sát nó đã bị tràn ra bit số 5 quá mức mà hệ thống mới này hỗ trợ kết quả là hệ thống loại bỏ bit số 5 đi chỉ giữ lại đúng 4 bit là `0000` thôi kết quả là 0 cũng như thế với hiện tượng 64bit trên thôi.
+tại sao lại bằng 0?, do là chúng ta đã nhìn thấy hiện tượng unsigned overflow bây giờ hãy giải thích tại sao nó lại bằng 0. Cho ví dụ, hệ thống mới của chúng ta là 4 bit `0000 -> 1111` bây giờ tính $$\Large2^{4} = 10000$$, ta quan sát nó đã bị tràn ra bit số 5 quá mức mà hệ thống mới này hỗ trợ kết quả là hệ thống loại bỏ bit số 5 đi chỉ giữ lại đúng 4 bit là `0000` thôi kết quả là 0 cũng như thế với hiện tượng 64bit trên thôi. Vậy chúng ta hãy thử đổi con số kết quả của $$\Large2^{64}$$ sang số nguyên xem sao. Ở đây, ta sẽ lấy nó bằng cách trừ 1 đi với $$\Large2^{64}-1$$
+
+$$\huge2^{64}-1 = -1$$
+
+![alt text](image39.png)
+
+Hiện tượng bù hai xuất hiện, `11111111..` luôn là `-1` nếu MSB = 1 là âm, ở đây ta sẽ lấy `-1` luôn nhưng sẽ áp cho nó vô C . Cho đọan C sau :
+
+```c
+#include <stdio.h>
+
+int main(void){
+	long long a = -1;
+
+	printf("%llu\n",(unsigned long long)a); /*lúc này là 2**64-1 là 
+											`1111111111..` full hết bit*/
+
+	a += 1;
+
+	printf("%llu\n",(unsigned long long)a); //chúng ta quan sát, lúc này nó sẽ là 0 
+
+	return 0;
+}
+```
+
+> gcc -o test_64bit test_64bit.c ; ./test_64bit
+
+![alt text](image40.png)
+
+Đấy, chúng ta thấy nó bị tràn bit khi cộng lại. Vậy ta biết `18446744073709551615` là số nguyên không dấu của 64bit đó là giới hạn của nó, bị tràn là `18446744073709551616` vậy chúng ta thử echo hai số này thì hiện tượng nó vẫn xảy ra
+
+![alt text](image41.png)
 
 cho số bit mà hệ thống mới này hỗ trợ là 4 bit là từ 0000 tới 1111 bây giờ ta lấy 0000 cho vào bảng để tính
 
@@ -649,7 +680,7 @@ cho số bit mà hệ thống mới này hỗ trợ là 4 bit là từ 0000 tớ
 
 ![alt text](image36.png)
 
-ở đây kết quả của biểu thức $$\Large2^{4}$$ . Nhưng kết quả này vượt quá sự cho phép của hệ thống 4bit và bit 1 bên ngoài bị loại bỏ, kết quả là `0000` = 0 , vậy thì thử cộng thêm 1 xem sao :
+ở đây kết quả của biểu thức $$\Large2^{4}$$ . Nhưng kết quả này vượt quá sự cho phép của hệ thống 4bit và bit 1 bên ngoài bị loại bỏ, kết quả là `0000` = 0, vậy thì thử cộng thêm 1 xem sao :
 
 | 4 bit | 0000 |
 |-------|------|
@@ -715,6 +746,7 @@ Chúng ta thấy output của cả hai đều là 0, vậy chứng tỏ nó đã
 
 <details>
 	<summary>Vì sao cả hai kiểu dữ liệu là 0? chả nhẽ nó đã sign extension rồi à?</summary>
+- Trước hết là chúng ta debug chương trình đã 
 </details>
 
 </details>
