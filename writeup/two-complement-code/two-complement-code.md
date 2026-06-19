@@ -641,6 +641,14 @@ $$\Large2^{64} = 0$$
 
 tại sao lại bằng 0?, do là chúng ta đã nhìn thấy hiện tượng unsigned overflow bây giờ hãy giải thích tại sao nó lại bằng 0. Cho ví dụ, hệ thống mới của chúng ta là 4 bit `0000 -> 1111` bây giờ tính $$\Large2^{4} = 10000$$, ta quan sát nó đã bị tràn ra bit số 5 quá mức mà hệ thống mới này hỗ trợ kết quả là hệ thống loại bỏ bit số 5 đi chỉ giữ lại đúng 4 bit là `0000` thôi kết quả là 0 cũng như thế với hiện tượng 64bit trên thôi.
 
+cho số bit mà hệ thống mới này hỗ trợ là 4 bit là từ 0000 tới 1111 bây giờ ta lấy 0000 cho vào bảng để tính
+
+| 4 bit | 0000 |
+|-------|------|
+| $$2^{4}$$ | 10000 |	<-- ở đây kết quả của biểu thức $$\Large2^{4}$$
+
+Nhưng kết quả này vượt quá sự cho phép của hệ thống 4bit và bit 1 bên ngoài bị loại bỏ, kết quả là `0000` = 0
+
 > Chúng ta có thể áp dụng với kiểu dữ liệu C, nếu bạn muốn chi tiết hơn nữa
 
 <details>
