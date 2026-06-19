@@ -778,6 +778,9 @@ Khoan, ta bắt gặp hiện tượng là tại sao cái hàm `luy_thua()` vốn
 > phần trả lời câu hỏi tham số luy_thua, bạn có thể bỏ qua khi ko quan tâm tới
 <details>
 	<summary>vì sao lại có hai thanh ghi rdx và rcx</summary>
+
+- đầu tiên là hàm luy_thua() chỉ nhận 2 tham số, Đúng. Nhưng việc gdb hiển thị 2 thanh ghi rdx và rcx chỉ là nó hiện để tiện theo dõi, vì hai thanh ghi đó vốn bằng 0 và hàm đó compiler hay program đều không lấy tham số nhiều hơn giới hạn của hàm lệnh. Nó vẫn lấy 2 tham số chỉ là nó hiện cho tiện nhìn thôi
+
 </details>
 
 ![alt text](image45.png)
