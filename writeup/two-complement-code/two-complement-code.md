@@ -646,7 +646,8 @@ cho số bit mà hệ thống mới này hỗ trợ là 4 bit là từ 0000 tớ
 | 4 bit | 0000 |
 |-------|------|
 | $$2^{4}$$ | 10000 |	
- ^----- ở đây kết quả của biểu thức $$\Large2^{4}$$
+
+	^----- ở đây kết quả của biểu thức $$\Large2^{4}$$
 Nhưng kết quả này vượt quá sự cho phép của hệ thống 4bit và bit 1 bên ngoài bị loại bỏ, kết quả là `0000` = 0
 
 > Chúng ta có thể áp dụng với kiểu dữ liệu C, nếu bạn muốn chi tiết hơn nữa
