@@ -8,15 +8,15 @@
 
 - 1.[Mã bù hai](#mã-bù-hai)
 
-	- 1.1.Mã bù hai là gì ? (Two's Complement Encodings, 2.2.3 trang 99,100)
+	- 1.1.Mã bù hai là gì ? *(Two's Complement Encodings, 2.2.3 trang 99,100)*
 
-	- 1.2.Cách đọc bit parrent sang số nguyên ? (Unsigned Encodings, 2.2.2 trang 97,98)
+	- 1.2.Cách đọc bit parrent sang số nguyên ? *(Unsigned Encodings, 2.2.2 trang 97,98)*
 
 	- 1.3.Miền giá trị biểu diễn được
 
 	- 1.3.1.Áp dụng thử vào C
 
-	- 1.4.Chuyển đổi giữa unsigned và signed (Conversions Between Signed and Unsigned, 2.2.4 trang 105,106)
+	- 1.4.Chuyển đổi giữa unsigned và signed *(Conversions Between Signed and Unsigned, 2.2.4 trang 105,106)*
 
 	- 1.5.Vì sao gọi là mã bù hai?
 
@@ -39,6 +39,8 @@
 	- 2.1.2.2 cờ OF (overflow flag)
 
 	- 2.1.2.3 vì sao MSB đổi?
+
+---
 
 # Mã bù hai
 
