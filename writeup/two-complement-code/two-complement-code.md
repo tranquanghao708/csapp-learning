@@ -26,7 +26,7 @@
 
 	- 2.1.1 signed overflow
 
-	- 2.1.1.1 modulo $$2^{N}$$
+	- 2.1.1.1 modulo $$\Large2^{N}$$
 
 	- 2.1.1.2 cờ CF (carry flag)
 
@@ -621,7 +621,7 @@ bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
 
 **2.1.1 signed overflow**
 
-**2.1.1.1 modulo $$2^{N}$$**
+**2.1.1.1 modulo $$\Large2^{N}$$**
 
 **2.1.1.2 cờ CF (carry flag)**
 
