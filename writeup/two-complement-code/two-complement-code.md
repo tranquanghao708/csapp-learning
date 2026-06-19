@@ -649,7 +649,18 @@ cho số bit mà hệ thống mới này hỗ trợ là 4 bit là từ 0000 tớ
 
 ![alt text](image36.png)
 
-ở đây kết quả của biểu thức $$\Large2^{4}$$ . Nhưng kết quả này vượt quá sự cho phép của hệ thống 4bit và bit 1 bên ngoài bị loại bỏ, kết quả là `0000` = 0
+ở đây kết quả của biểu thức $$\Large2^{4}$$ . Nhưng kết quả này vượt quá sự cho phép của hệ thống 4bit và bit 1 bên ngoài bị loại bỏ, kết quả là `0000` = 0 , vậy thì thử cộng thêm 1 xem sao :
+
+| 4 bit | 0000 |
+|-------|------|
+| $$2^{4}+1$$ | 10001 |	
+
+![alt text](image37.png)
+
+kết quả sẽ bằng 1 tại bit bên ngoài thật sự đã bị bỏ rồi là thành `0001`. 
+
+> [!IMPORTANT]
+> Nếu ta nhân hay cố làm với số lớn hơn ngưỡng bit mà hệ thống cho phép thì nó cũng sẽ giữ những bit, số trong ngưỡng bằng cách cắt những bit ngoài đi
 
 > Chúng ta có thể áp dụng với kiểu dữ liệu C, nếu bạn muốn chi tiết hơn nữa
 
