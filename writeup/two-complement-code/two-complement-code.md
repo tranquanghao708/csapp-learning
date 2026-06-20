@@ -881,7 +881,7 @@ thì bây giờ short là 16bit = 2byte thì int nó sẽ gấp đôi short là 
 
 <details>
 	<summary>câu trả lời cho câu hỏi trên</summary>
-- Nó xảy ra ở phần cứng, còn về hợp ngữ chỉ là để diễn giải hay gắn này kia chứ tràn số bit là hoàn toàn ở CPU.**vậy ở đây chúng ta dùng kiểu dữ liệu mà? có phải** $$\Large2^{64}$$ **ở 64bit đâu mà ở phần cứng?**
+- Nó xảy ra ở phần cứng, còn về hợp ngữ chỉ là để diễn giải hay gắn này kia chứ tràn số bit là hoàn toàn ở CPU.Vậy ở đây chúng ta dùng kiểu dữ liệu mà? có phải $$\Large2^{64}$$ ở 64bit đâu mà ở phần cứng?
 </details>
 
 **Vậy thì câu trả lời cho câu hỏi sign extension trên là đây :** ở program này, nó ko dùng sign extension mà nó dùng zero extension, nó vẫn tăng short thành int. Đúng, compiler logs đã chứng minh điều đó, vấn đề là chúng ta chỉ biết là nó xảy ra cho chúng ta thấy khi call tới printf điều đó ko đúng nó ko phải cố định mỗi hàm đó mà nó còn nhiều hàm khác cứ xem lênh `movzs` là ví dụ. Còn về, tại sao cả hai đều là 0 là vì tràn bit số ko dấu unsigned overflow, trong debug chúng ta đã thấy lệnh `movzs` chỉ lấy 16bit, 2 byte vaddr là `0000` là của short nhưng short bị ép thành int và zero extension lên thêm 16 bit nữa là gấp đôi short tổng cộng vaddr là `00000000000000000000`, khi đó nó đọc một dãy được xem là 0 nên nó mới gắn 0 vào eax và từ đó gắn vào các thanh ghi rsi trước khi call printf tại main
