@@ -1,0 +1,51 @@
+short int luy_thua (short int input, short int intput_two)
+{
+  short int D.3445;
+  short int temp;
+
+  temp = 1;
+  {
+    int i;
+
+    i = 1;
+    goto <D.3439>;
+    <D.3438>:
+    temp.0_1 = (unsigned short) temp;
+    input.1_2 = (unsigned short) input;
+    _3 = temp.0_1 * input.1_2;
+    temp = (short int) _3;
+    i = i + 1;
+    <D.3439>:
+    _4 = (int) intput_two;
+    if (i <= _4) goto <D.3438>; else goto <D.3436>;
+    <D.3436>:
+  }
+  D.3445 = temp;
+  return D.3445;
+}
+
+
+int main ()
+{
+  int D.3447;
+
+  {
+    short int a;
+
+    a = 1;
+    a = 0;
+    a = luy_thua (2, 16);
+    _1 = (int) a;
+    printf ("%d\n", _1);
+    a = 0;
+    a = luy_thua (2, 32);
+    _2 = (int) a;
+    printf ("%d\n", _2);
+    D.3447 = 0;
+    return D.3447;
+  }
+  D.3447 = 0;
+  return D.3447;
+}
+
+

@@ -1,0 +1,43 @@
+
+;; Function luy_thua (null)
+;; enabled by -tree-original
+
+
+{
+  short int temp = 1;
+
+    short int temp = 1;
+  {
+    int i = 1;
+
+        int i = 1;
+    goto <D.3439>;
+    <D.3438>:;
+    temp = (short int) ((unsigned short) temp * (unsigned short) input);
+    i++ ;
+    <D.3439>:;
+    if ((int) intput_two >= i) goto <D.3438>; else goto <D.3436>;
+    <D.3436>:;
+  }
+  return temp;
+}
+
+
+;; Function main (null)
+;; enabled by -tree-original
+
+
+{
+  short int a = 1;
+
+    short int a = 1;
+  a = 0;
+  a = luy_thua (2, 16);
+  printf ((const char * restrict) "%d\n", (int) a);
+  a = 0;
+  a = luy_thua (2, 32);
+  printf ((const char * restrict) "%d\n", (int) a);
+  return 0;
+}
+return 0;
+

@@ -1,0 +1,93 @@
+
+;; Function luy_thua (luy_thua, funcdef_no=0, decl_uid=3432, cgraph_uid=1, symbol_order=0)
+
+pointer_query counters:
+  index cache size:   0
+  index entries:      0
+  access cache size:  0
+  access entries:     0
+  hits:               0
+  misses:             0
+  failures:           0
+  max_depth:          0
+short int luy_thua (short int input, short int intput_two)
+{
+  int i;
+  short int temp;
+  short int D.3445;
+  unsigned short temp.0_1;
+  unsigned short input.1_2;
+  unsigned short _3;
+  int _4;
+  short int _10;
+
+  <bb 2> :
+  temp_7 = 1;
+  i_8 = 1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  temp.0_1 = (unsigned short) temp_5;
+  input.1_2 = (unsigned short) input_12(D);
+  _3 = temp.0_1 * input.1_2;
+  temp_13 = (short int) _3;
+  i_14 = i_6 + 1;
+
+  <bb 4> :
+  # temp_5 = PHI <temp_7(2), temp_13(3)>
+  # i_6 = PHI <i_8(2), i_14(3)>
+  _4 = (int) intput_two_9(D);
+  if (i_6 <= _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  _10 = temp_5;
+
+  <bb 6> :
+<L3>:
+  return _10;
+
+}
+
+
+
+;; Function main (main, funcdef_no=1, decl_uid=3441, cgraph_uid=2, symbol_order=1)
+
+pointer_query counters:
+  index cache size:   0
+  index entries:      0
+  access cache size:  0
+  access entries:     0
+  hits:               0
+  misses:             0
+  failures:           0
+  max_depth:          0
+int main ()
+{
+  short int a;
+  int D.3447;
+  int _1;
+  int _2;
+  int _13;
+
+  <bb 2> :
+  a_3 = 1;
+  a_4 = 0;
+  a_7 = luy_thua (2, 16);
+  _1 = (int) a_7;
+  printf ("%d\n", _1);
+  a_9 = 0;
+  a_11 = luy_thua (2, 32);
+  _2 = (int) a_11;
+  printf ("%d\n", _2);
+  _13 = 0;
+
+  <bb 3> :
+<L0>:
+  return _13;
+
+}
+
+

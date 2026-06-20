@@ -1,0 +1,65 @@
+
+;; Function luy_thua (luy_thua, funcdef_no=0, decl_uid=3432, cgraph_uid=1, symbol_order=0)
+
+short int luy_thua (short int input, short int intput_two)
+{
+  int i;
+  short int temp;
+  short int D.3445;
+
+  <bb 2> :
+  temp = 1;
+  i = 1;
+  goto <bb 4>; [INV]
+
+  <bb 3> :
+  temp.0_1 = (unsigned short) temp;
+  input.1_2 = (unsigned short) input;
+  _3 = temp.0_1 * input.1_2;
+  temp = (short int) _3;
+  i = i + 1;
+
+  <bb 4> :
+  _4 = (int) intput_two;
+  if (i <= _4)
+    goto <bb 3>; [INV]
+  else
+    goto <bb 5>; [INV]
+
+  <bb 5> :
+  D.3445 = temp;
+
+  <bb 6> :
+<L3>:
+  return D.3445;
+
+}
+
+
+
+;; Function main (main, funcdef_no=1, decl_uid=3441, cgraph_uid=2, symbol_order=1)
+
+int main ()
+{
+  short int a;
+  int D.3447;
+
+  <bb 2> :
+  a = 1;
+  a = 0;
+  a = luy_thua (2, 16);
+  _1 = (int) a;
+  printf ("%d\n", _1);
+  a = 0;
+  a = luy_thua (2, 32);
+  _2 = (int) a;
+  printf ("%d\n", _2);
+  D.3447 = 0;
+
+  <bb 3> :
+<L0>:
+  return D.3447;
+
+}
+
+
