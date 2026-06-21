@@ -16,8 +16,6 @@
 
 	- 1.4.Chuyển đổi giữa unsigned và signed *(Conversions Between Signed and Unsigned, 2.2.4 trang 105,106)*
 
-	- 1.5.Vì sao gọi là mã bù hai?
-
 - 2.[Tràn số](#tràn-số)
 
 	- 2.1 signed overflow và unsigned overflow
@@ -111,7 +109,6 @@ vậy còn số nhị phân `011011000100` ta lập bảng :
 | Bit vị trí | 11 | 10 | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
 |------------|----|----|---|---|---|---|---|---|---|---|---|---|
 | số bit     | 0  | 1  | 1 | 0 | 1 | 1 | 0 | 0 | 0 | 1 | 0 | 0 |
-|			 |    |    |   |   |   |   |   |   |   |   |   |   |
 | Trọng số   | bỏ | 1024 | 512 | bỏ | 128 | 64 | bỏ | bỏ | bỏ | 4 | bỏ | bỏ |
 
 ![alt text](image4.png)
@@ -192,7 +189,6 @@ int main(void){
 
 Nó hoạt động đúng như những gì mà sách nói cũng như kỳ vọng của tôi
 
-> [!NOTE]
 > Ghi chú : ở đây theo chuẩn CPU hầu hết các thiết bị hiện đại thì nó đều dùng bù hai nên như bạn thấy trong ảnh là kết quả đúng là Tmin của 16bit, nhưng với theo cách nhìn của lập trình C điều này là UB vì phép toán này thuộc nhóm signed overflow
 
 tương tự với nhiều kiểu dữ liệu có dấu khác:
@@ -593,8 +589,12 @@ chúng ta quan sát, thấy in ra từ hợp lệ. Vậy điều kiện `-1 > 1U
 
 </details>
 
-**1.5.Vì sao gọi là mã bù hai?**
+**Vì sao gọi là mã bù hai?**
 
+> chủ yếu là lịch sử của nó, bạn có thể bỏ qua nếu ko quan tâm tới
+
+<details>
+	<summary>vì sao gọi là mã bù hai</summary>
 - Lúc đầu người ta tạo ra `mã bù một` loại mã bù một này diễn giải số âm bằng cách đảo bit . Ví dụ lấy `5 + (-5)` thì 5 có binrary là `0000101` và (-5) thì đảo bit lại là `1111010` và lấy hai phép đó cộng lại :
 
 | số 5 | 0000101 |
@@ -616,7 +616,7 @@ nó không ra 0, kết quả đã sai rồi còn phải cộng thêm carry quay 
 bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
 
 > Phần này chủ yếu là lịch sử của bù hai
-
+</details>
 ---
 
 # Tràn số
