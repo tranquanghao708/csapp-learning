@@ -32,7 +32,7 @@
 
 	- 2.1.1.3 Vì sao phép cộng unsigned lại tương đương modulo $$\Large2^{N}$$?
 
-	- 2.1.1.4 áp dụng thử vào C
+	- 2.1.1.4 vì sao unsigned arithmetic chính là modulo $$\Large2^{N}$$?
 
 	- 2.1.2 signed overflow
 
@@ -703,6 +703,7 @@ kết quả sẽ bằng 1 tại bit bên ngoài thật sự đã bị bỏ rồi
 
 <details>
 	<summary>Trả lời câu hỏi trên</summary>
+- Vì bit đó cao hơn ngưỡng mà CPU hỗ trợ. Nghĩa là, khi cpu chỉ hỗ trợ 64bit bit đó lại tràn sang số 65, quá ngưỡng mà CPU hỗ trợ nên bit ngoài đó bị bỏ. Đơn giản là CPU nó ko muốn bỏ đi nhưng cá nhân ko có dây hay transitor nào đủ không gian chứa bit số 65 đó nên bị bỏ
 </details>
 
 > [!IMPORTANT]
@@ -906,7 +907,7 @@ thì bây giờ short là 16bit = 2byte thì int nó sẽ gấp đôi short là 
 |--------|------|
 | $$2^{4}$$ | 10000 |
 
-theo phần cứng thì nó sẽ bỏ số `1` bên ngoài đi vì vượt quá 4 bit, điều này chúng ta vừa đi qua ở mục 2.1.1.1 modulo $$\Large2^{N}$$ và 2.1.1 unsigned overflow, vậy phần này chúng ta sẽ tiếp tục soi xem cái bit `1` bị bỏ đấy nó sẽ đi về đâu? Thật ra là tất cả các bit bị loại bỏ bởi phần cứng được đi vào cờ carry CF, Carry Flag lưu bit carry bị đẩy ra khỏi bit cao nhất trong phép toán unsigned. Thế phép toán unsigned là gì và bit carry là sao nữa?
+theo phần cứng thì nó sẽ bỏ số `1` bên ngoài đi vì vượt quá 4 bit, điều này chúng ta vừa đi qua ở mục 2.1.1.1 modulo $$\Large2^{N}$$ và 2.1.1 unsigned overflow, vậy phần này chúng ta sẽ tiếp tục soi xem cái bit `1` bị bỏ đấy nó sẽ đi về đâu? Thật ra là tất cả các bit bị loại bỏ bởi phần cứng được đi vào cờ carry CF, Carry Flag lưu bit carry bị đẩy ra khỏi bit cao nhất trong phép toán unsigned. **Thế phép toán unsigned là gì và bit carry là sao nữa?**
 
 Đầu tiên phép toán unsigned là gì, là phép toán được thực hiện trên số nguyên hệ không dấu unsigned. Nghĩa là, nó sẽ được thực hiện trên một dãy bit và khi MSB của dãy bit đó là 1 thì nó sẽ ko có dấu âm vì trên hệ không dấu unsigned là tất cả số đều là số dương hết ví dụ : 
 
@@ -915,11 +916,45 @@ theo phần cứng thì nó sẽ bỏ số `1` bên ngoài đi vì vượt quá 
 | phép toán unsigned với biểu thức $$2^{4}-1$$ | 1111 = 15 |
 | phép toán signed với biểu thức $$2^{4}-1$$ | 1111 = -1 |
 
-Bạn thấy, unsigned khi MSB = 1 là ko có hiện tượng bù hai là số âm và trừ đi với số dương khác, nó là số ko dấu nên mọi con số là dương hết. Đó gọi là phép toán unsigned
+Bạn thấy, unsigned khi MSB = 1 là ko có hiện tượng bù hai là số âm và trừ đi với số dương khác, nó là số ko dấu nên mọi con số là dương hết. Đó gọi là phép toán unsigned, ví dụ với C :
+
+> phần ví dụ phép toán unsigned với C, bạn có thể bỏ qua nếu ko quan tâm đến
+
+<details>
+	<summary>Ví dụ với C</summary>
+Cho đoạn mã C như sau:
+
+```c
+#include <stdio.h>
+
+int main(void){
+	//biểu thức unsigned
+	unsigned short a = 32767; //Tmax của short 0111111...
+
+	printf("a ko dấu là : %d, cộng thêm 1 là : %d\na có dấu là : %d, cộng thêm 1 là : %d",
+
+			a,
+
+			a+1, //lúc này là 100000... MSB = 1 nhưng mà ko phải số âm, vì là hệ ko dấu nên sẽ là 32767 + 1 = 32768
+
+			(signed)a, //lúc này mới chuyển sang số có dấu nhưng vẫn là 32768 vì msb chưa là 1
+
+			(signed)a+1 //lúc này mới là MSB = 1 thì cái này chính là số âm Tmin = -32768
+	);
+
+	return 0;
+}
+```
+
+> gcc -o test_type test_type.c ; ./test_type
+
+</details>
+
+thứ hai là bit carry là gì ,
 
 **2.1.1.3 Vì sao phép cộng unsigned lại tương đương modulo $$\Large2^{N}$$?**
 
-**2.1.1.4 áp dụng thử vào C**
+**2.1.1.4 vì sao unsigned arithmetic chính là modulo $$\Large2^{N}$$?**
 
 **2.1.2 signed overflow**
 
