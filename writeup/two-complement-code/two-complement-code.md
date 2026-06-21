@@ -984,6 +984,30 @@ Bây giờ debug chương trình mới có thể giải mã được cái quỷ 
 <details>
 	<summary>debug chương trình C</summary>
 - Ở đây, chúng ta tiếp tục lại là gdb trước:
+
+> start
+
+và
+
+> ni
+
+![alt text](image60.png)
+
+Chúng ta đang ở đầu main, vậy bây giờ chúng ta soi xem các thanh ghi cấp vào printf như thế nào đã, đầu tiên là chúng ta disas ra phát.
+
+> disas main
+
+![alt text](image61.png)
+
+Chúng ta để ý các thanh ghi được làm việc và xử lý trước khi chúng được gắn vào cho printf. Ở đây, chúng ta có thanh ghi rax = 64 bit, eax = 32bit, AX = 16bit . Chúng ta cũng có một bẳng họ thanh ghi Rax ở đây :
+
+| Thanh ghi | số bit |
+|-----------|--------|
+| RAX		|	64	 |
+| EAX 		|	32   |
+| AX 		|   16 	 |
+| AL và AH  | 	8 	 |
+
 </details>
 
 </details>
