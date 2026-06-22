@@ -1060,7 +1060,12 @@ dựa vào sơ đồ, chúng ta thấy eax nhỏ hơn gâp đôi rax nhưng nó 
 
 - Ở đây, chúng ta có RAX và họ của nó là EAX, AX, AH và AL. Khi chúng ta **ghi vào EAX thì 32 bit cao hơn kế tiếp của RAX bị xóa bỏ và zero 0 bit** , nhưng khi ghi vào AX , AH, AL nó chỉ thay thế chứ nó ko xóa bit gì hết ở rax. Nhưng riêng EAX thì điều nãy xảy ra, cho ví dụ :
 
-khi có gía trị của thanh ghi rax sẵn có là `0x55555f0000000000` ta ghi một value như `0x7fff` lấy cảm hứng từ value Tmax của short 16bit đi, ta ghi vào thanh ghi AL hay AH thì lúc này rax chỉ thay thế vào các bit thấp như sau thôi `0x55555f00000000ff` vì Al AH chỉ 8 bit nên nó chỉ copy `ff` chứ ko copy hết `7fff` được vì đó là 16bit ,thử với AX là 16bit xem sao bây giờ ta ghi vào AX là `0x7fff` thì rax nó thay thế thành `0x55555f0000007fff` lúc này mới trọn `7fff` vì nó đúng 16bit với AX cũng là 16bit. Chúng ta có thể chứng minh nó với hợp ngữ assembly :
+khi có gía trị của thanh ghi rax sẵn có là `0x55555f0000000000` ta ghi một value như `0x7fff` lấy cảm hứng từ value Tmax của short 16bit đi, ta ghi vào thanh ghi AL hay AH thì lúc này rax chỉ thay thế vào các bit thấp như sau thôi `0x55555f00000000ff` vì Al AH chỉ 8 bit nên nó chỉ copy `ff` chứ ko copy hết `7fff` được vì đó là 16bit ,thử với AX là 16bit xem sao bây giờ ta ghi vào AX là `0x7fff` thì rax nó thay thế thành `0x55555f0000007fff` lúc này mới trọn `7fff` vì nó đúng 16bit với AX cũng là 16bit. 
+
+> Chúng ta có thể chứng minh nó với hợp ngữ assembly, bạn có thể bỏ qua nếu ko quan tâm tới
+
+<details>
+	<summary>chứng minh assembly</summary>
 
 ```asm
 section .text
@@ -1076,6 +1081,27 @@ _start:
 ![alt text](image66.png)
 
 lúc đầu khi khởi chạy ta thấy nó SIGSEGV là do nó truy cập vaddr ko hợp lệ, để thấy logic ta dùng gdb để debug ra
+
+> gdb -q asm
+
+và
+
+> start
+
+![alt text](image67.png)
+
+Chúng ta quan sát nó đã gắn vào thanh ghi rax với giá trị địa chỉ là `0x55555f0000000000`, ở đây ta tiếp tục ni để thực thi xong lệnh `mov al`. Xem nó có như kỳ vọng là `0x55555f00000000ff` ko đã nhé:
+
+> ni
+
+![alt text](image68.png)
+
+Chúng ta thấy nó đã gắn như kỳ vọng của chúng ta là `0x55555f00000000ff` rồi. Đây là ví dụ cho các thanh ghi họ của RAX đọc dữ liệu thôi, tương tự với các thanh ghi khác chỉ là chênh lệch số dung lượng bit thôi
+
+</details>
+
+Vậy còn thanh ghi EAX thì nó sẽ khác một chút
+
 </details>
 
 </details>
