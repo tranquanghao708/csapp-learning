@@ -1057,6 +1057,7 @@ dựa vào sơ đồ, chúng ta thấy eax nhỏ hơn gâp đôi rax nhưng nó 
 
 <details>
 	<summary>Quy tắc đặc biệt với họ RAX của ABI x86-64</summary>
+
 - Ở đây, chúng ta có RAX và họ của nó là EAX, AX, AH và AL. Khi chúng ta **ghi vào EAX thì 32 bit cao hơn kế tiếp của RAX bị xóa bỏ và zero 0 bit** , nhưng khi ghi vào AX , AH, AL nó chỉ thay thế chứ nó ko xóa bit gì hết ở rax. Nhưng riêng EAX thì điều nãy xảy ra, cho ví dụ
 
 </details>
