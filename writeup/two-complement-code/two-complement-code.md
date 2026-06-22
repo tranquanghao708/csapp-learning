@@ -1058,8 +1058,24 @@ dựa vào sơ đồ, chúng ta thấy eax nhỏ hơn gâp đôi rax nhưng nó 
 <details>
 	<summary>Quy tắc đặc biệt với họ RAX của ABI x86-64</summary>
 
-- Ở đây, chúng ta có RAX và họ của nó là EAX, AX, AH và AL. Khi chúng ta **ghi vào EAX thì 32 bit cao hơn kế tiếp của RAX bị xóa bỏ và zero 0 bit** , nhưng khi ghi vào AX , AH, AL nó chỉ thay thế chứ nó ko xóa bit gì hết ở rax. Nhưng riêng EAX thì điều nãy xảy ra, cho ví dụ
+- Ở đây, chúng ta có RAX và họ của nó là EAX, AX, AH và AL. Khi chúng ta **ghi vào EAX thì 32 bit cao hơn kế tiếp của RAX bị xóa bỏ và zero 0 bit** , nhưng khi ghi vào AX , AH, AL nó chỉ thay thế chứ nó ko xóa bit gì hết ở rax. Nhưng riêng EAX thì điều nãy xảy ra, cho ví dụ :
 
+khi có gía trị của thanh ghi rax sẵn có là `0x55555f0000000000` ta ghi một value như `0x7fff` lấy cảm hứng từ value Tmax của short 16bit đi, ta ghi vào thanh ghi AL hay AH thì lúc này rax chỉ thay thế vào các bit thấp như sau thôi `0x55555f00000000ff` vì Al AH chỉ 8 bit nên nó chỉ copy `ff` chứ ko copy hết `7fff` được vì đó là 16bit ,thử với AX là 16bit xem sao bây giờ ta ghi vào AX là `0x7fff` thì rax nó thay thế thành `0x55555f0000007fff` lúc này mới trọn `7fff` vì nó đúng 16bit với AX cũng là 16bit. Chúng ta có thể chứng minh nó với hợp ngữ assembly :
+
+```asm
+section .text
+	global _start
+
+_start:
+	mov rax, 0x55555f0000000000 ; copy thẳng vào rax vì đây là ví dụ
+	mov al , 0x7fff ; copy vào al , lúc này rax sẽ thành 0x55555f00000000ff
+```
+
+> nasm -f elf64 asm.asm ; ld asm.o -o asm
+
+![alt text](image66.png)
+
+lúc đầu khi khởi chạy ta thấy nó SIGSEGV là do nó truy cập vaddr ko hợp lệ, để thấy logic ta dùng gdb để debug ra
 </details>
 
 </details>
