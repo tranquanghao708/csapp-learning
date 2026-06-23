@@ -1202,7 +1202,7 @@ Kết quả đúng như kỳ vọng của chúng ta và bạn thấy đó chính
 
 thứ hai là bit carry là gì , cũng được gọi là bit nhớ là bit thứ N+1 sinh ra khi cộng hai số N bit. Ví dụ khi ta có 4bit, có dung lương lắp đầy bit là `1111` = $$\Large2^{4}-1$$ nhưng khi ta cộng thêm 1 bit vào thì sẽ thành `10000` 5 bit trong kiến trúc 4 bit thì bit số 5 sẽ bị loại bỏ, bit đó gọi là bit carry, carry bit luôn bị bỏ nhưng lý do bị bỏ thì kiến trúc của các hệ thống như thanh ghi, cpu v.v. có dung lương bit cố định nếu vượt quá số bit chẳng hạn cpu 64bit nhưng vượt qua 64 bit thành 65bit thì bit số 65 sẽ bị loại bỏ. Phần bit carry gắn liền với carry flag nếu bit carry là số bit bị loại bỏ thì cờ carry CF là chỉ số thông báo trạng thái là có carry hay ko có carry, nó chỉ có hai số 0 và 1
 
-CPU nó ko đơn giản là quên carry bit đi, khi phép cộng được hoàn thành thì nó sẽ sao chép trạng thái của carrybit vào trogn carryflag (CF) trong thanh ghi eflags/rflags. Vậy còn **thanh ghi eflags và rflags là gì?**
+CPU nó ko đơn giản là quên carry bit đi, khi phép cộng được hoàn thành thì nó sẽ sao chép trạng thái của carrybit vào trogn carryflag (CF) trong thanh ghi eflags/rflags. Vậy còn **thanh ghi eflags và rflags là gì?**, hai thanh ghi này là hai thanh ghi đặc biệt dùng để lưu trạng thái của các flag chẳng hạn như CF, ZF, OF v.v. nó ko như RDX hay RAX, CPU sẽ tự động cập nhật các thanh ghi này nếu các flag bị thay đổi và sau các phép biến đổi và toán học, Trong hai thanh ghi là EFLAGS và RFLAGS nó ko khác vai trò, hai chúng nó giống nhau ở chỗ là chứa các trạng thái của các flag, điều mà làm cho chúng khác nhau là về dung lượng kiến trúc trong đó RFLAGS là 64bit còn EFLAGS là 32bit
 
 > phần chứng minh với hợp ngữ assembly, bạn có thể bỏ qua nếu ko quan tâm đến
 
