@@ -1208,6 +1208,36 @@ CPU nó ko đơn giản là quên carry bit đi, khi phép cộng được hoàn
 
 <details>
 	<summary>chứng minh với asm</summary>
+
+- Ta có đoạn assembly như sau :
+
+```asm
+section .text
+	global _start
+_start:
+	mov al, 0xff ; 2**8-1 = 255
+	add al, 0x1 ; cộng 1 vào
+```
+
+> nasm -f elf64 asm.asm ; ld asm.o -o asm ; ./asm
+
+![alt text](image76.png)
+
+Chúng ta thấy nó sẽ xảy ra SIGSEGV khi chương trình hợp ngữ được thực thi, điều này hoàn toàn bình thường vì hợp ngữ gọn nhẹ nhanh và thô hơn C nếu ko exit cuối thì việc nó tiếp tục thực thi vào vaddr ko hợp lệ là điều hoàn toàn bình thường. Bây giờ, vấn đề chính ko phải là SIGSEGV mà là chứng minh để thấy tận mắt cái CF và thanh ghi EFLAGS hoạt động. Chúng ta vẫn dùng gdb cho việc này, ở đây bật gdb và start luôn nhé:
+
+> gdb -q asm 
+
+![alt text](image77.png)
+
+Như trong ảnh, chúng ta thấy nó break tại đầu _start, ở đây hợp ngữ thì ở _start là bắt đầu chạy chương trình còn C thì ở main. Chúng ta ni và soi các cờ và flags hoạt động
+
+![alt text](image78.png)
+
+và
+
+![alt text](image79.png)
+
+Chúng ta thấy trước khi lệnh `add al,0x1` vào thì eflag nó chỉ có `[if]` thôi, và ko có carry nào.
 </details>
 
 **2.1.1.3 Vì sao phép cộng unsigned lại tương đương modulo $$\Large2^{N}$$?**
