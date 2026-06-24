@@ -1245,7 +1245,7 @@ Chúng ta thấy trước khi lệnh `add al,0x1` vào thì eflag nó chỉ có 
 
 Ở đây nó hiện các cờ như `[ CF PF AF ZF IF ]` nghĩa là tất cả là `1`, cờ flag như carry flag và tất cả cờ khác chỉ có 0 và 1 chứ ko có số khác. Vậy binary `1001010111` này từ `0x257` là value của eflags **nó có nghĩa là gì?**, nó là vị trí của các flag được quy định bởi intel chúng ta có bảng intel flags như sau :
 
-| bit| flags |
+| vị trí bit bit| flags |
 |----|-------|
 | 0  |  CF	 |
 | 1  |  luôn = 1 (trên nhiều CPU) |
@@ -1260,6 +1260,12 @@ Chúng ta thấy trước khi lệnh `add al,0x1` vào thì eflag nó chỉ có 
 | 10 | DF |
 | 11 | OF |
 
+vì thế cho binary như `1001010111`. thì ta có bảng như sau :
+
+| vị trí bit | 9 | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+|------------|---|---|---|---|---|---|---|---|---|---|
+| bit 		 | 1 | 0 | 0 | 1 | 0 | 1 | 0 | 1 | 1 | 1 |
+| flags 	 | IF | TF | SF | ZF | reserved | AF | reserved | PF | | CF |
 </details>
 
 **2.1.1.3 Vì sao phép cộng unsigned lại tương đương modulo $$\Large2^{N}$$?**
