@@ -1299,7 +1299,11 @@ chúng ta thấy eflags vẫn là IF, nó ko có CF hay cái flag nào được 
 
 - giá trị bit là $$\Large2^{N}-1$$ nghĩa là Tmax của 1 dãy bit, khi chúng ta vượt quá Tmax của dãy bit đó sẽ ra hiện tượng unsigned overflow và sẽ có 1 bit carry và cờ carry (CF) sẽ = 1, điều này chúng ta đã đi qua ở các chủ đề phía trên rồi . Bây giờ, chúng ta giải quyết câu hỏi vì sao phép cộng unsigned lại tương đương modulo $$\Large2^{N}$$, trước hết chúng ta cần hiểu **modulo là gì và modulo $$\Large2^{N}$$ là gì?** đã còn phép cộng unsigned chính là phép tính unsigned và phần này ta đã đi qua ở đợt chủ đề vừa rồi. Modulo là phép tính chỉ ra kết quả là số dư khi thực hiện phép chia cả hai số, ví dụ `11 MOD 2 = 1 (vì 11 / 2 dư 1)` hoặc `13 MOD 2 = 2 (vì 13 / 2 dư 2)` hay nó luôn = 0 vì hai số chia ko dư ví dụ `10 MOD 2 = 0 (vì 10 chia hết cho 2 nên dư 0)` hoặc `20 MOD 5 = 0 (vì 20 chia hết cho 5 dư 0)` chúng ta thấy nó chỉ lấy những phần dư, kết quả dư là kết quả cho modulo vậy có phải ký hiệu `%` để lấy số dư ở lập trình ko, chính là nó và nguyên lý ko khác gì.
 
-Vậy còn modulo $$\Large2^{N}$$ là gì? , nếu modulo là chỉ lấy phần dư thì modulo $$\Large2^{N}$$ lấy những số dư của những đơn vị, chục v.v. các số chia với phép tính biểu thức $$\Large2^{N}$$ . Nghĩa là, khi ta có 4 bit tmax của bit này là 15 ($$\Large2^{4}-1 = 15$$) , chúng ta lấy 15 chia với $$\Large2^{4}$$ để lấy dư chúng ta có biểu thức modulo hoàn chỉnh như sau 15 MOD $$\Large2^{4}$$ = 15 MOD 16 = 1 ( vì 15 / 16 dư 1) nên kết quả của modulo là 1, đó là modulo  $$\Large2^{N}$$ vậy **điều này nghĩa là gì?**
+Vậy còn modulo $$\Large2^{N}$$ là gì? , nếu modulo là chỉ lấy phần dư thì modulo $$\Large2^{N}$$ lấy những số dư của những đơn vị, chục v.v. các số chia với phép tính biểu thức $$\Large2^{N}$$ . Nghĩa là, khi ta có 4 bit tmax của bit này là 15 ($$\Large2^{4}-1 = 15$$) , chúng ta lấy 15 chia với $$\Large2^{4}$$ để lấy dư chúng ta có biểu thức modulo hoàn chỉnh như sau 15 MOD $$\Large2^{4}$$ = 16 MOD 15 = 1 ( vì 15 / 16 dư 1) nên kết quả của modulo là 1, đó là modulo  $$\Large2^{N}$$ 
+
+![alt text](image84.png)
+
+vậy **điều này nghĩa là gì?**
 
 **2.1.1.4 vì sao unsigned arithmetic chính là modulo $$\Large2^{N}$$?**
 
