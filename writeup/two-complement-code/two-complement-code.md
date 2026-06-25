@@ -1308,9 +1308,9 @@ Vậy còn modulo $$\Large2^{N}$$ là gì? , nếu modulo là chỉ lấy phần
 
 ![alt text](image84.png)
 
- nên kết quả của modulo là 1, đó là modulo  $$\Large2^{N}$$ . Vậy **điều này nghĩa là gì?**, kết quả vừa rồi của modulo chính là số bit carry bị loại bỏ là 1. Vậy nếu thế thì ta cho ví dụ là ở đây 4bit có Tmax là 15, nhưng bây giờ $$\Large2^{4} = 16$$ là unsigned overflow trong kiến trúc 4bit 1 carry (1 lần) nhưng bây giờ ta thử tăng gấp đôi là 8 xem thì ta có biểu thức là $$\Large2^{4} \times 2 = 32$$ là 2 carry (2 lần) unsigned overflow, vậy chúng ta tiến hành tính modulo thử xem `32 mod 15 = 2` 
+ nên kết quả của modulo là 1, đó là modulo  $$\Large2^{N}$$ . Vậy **điều này nghĩa là gì?**, kết quả vừa rồi của modulo chính là số bit carry bị loại bỏ là 1. Vậy nếu thế thì ta cho ví dụ là ở đây 4bit có Tmax là 15, nhưng bây giờ $$\Large2^{4} = 16$$ là unsigned overflow trong kiến trúc 4bit 1 carry (1 lần) nhưng bây giờ ta thử tăng gấp đôi thì ta có biểu thức là $$\Large2^{4} \times 2 = 32$$ là 2 carry (2 lần) unsigned overflow, vậy chúng ta tiến hành tính modulo thử xem `32 mod 15 = 2` 
 
-![alt text](image85.png)
+![alt text](image86.png)
 
 Đó, chúng ta quan sát là nó ra kết quả là 2 vậy kết quả số dư của modulo này chính là số bit carry mà hệ thống bỏ sau khi xảy ra hiện tượng unsigned overflow. Vậy phép tính tổng quan là `<value_number> mod <Tmax của dãy bit> = <số bit carry sau khi unsigned overflow>`
 
