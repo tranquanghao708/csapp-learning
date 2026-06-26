@@ -1366,7 +1366,13 @@ Chúng ta dùng nó để cho các mục đích sau thứ nhất và lớn nhấ
 
 int main(void){
 	unsigned short max_short = 65535; //1111111...
-	printf("max_short hiện tại là:%d\nmax_short sau khi cộng 1 là:%d\nmodulo 65535 MOD 65536 là:%d\nmodulo 65536 MOD 65536 là:%d\nmax_short sau khi cộng thêm 392 là:%d\nmodulo 65535+392 MOD 65536 là:%d\nta thấy kết quả modulo và tính cộng ở C hoàn toàn trùng khớp\n",
+	printf("max_short hiện tại là:%d\n"
+		   "max_short sau khi cộng 1 là:%d\n"
+		   "modulo 65535 MOD 65536 là:%d\n"
+		   "modulo 65536 MOD 65536 là:%d\n"
+		   "max_short sau khi cộng thêm 392 là:%d\n"
+		   "modulo 65535+392 MOD 65536 là:%d\n"
+		   "ta thấy kết quả modulo và tính cộng ở C hoàn toàn trùng khớp\n",
 
 			max_short, //lúc này vẫn là 65535
 
