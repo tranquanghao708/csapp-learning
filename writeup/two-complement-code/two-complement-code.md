@@ -28,7 +28,7 @@
 
 	- 2.1.1.3 Vì sao phép cộng unsigned lại tương đương modulo $$\Large2^{N}$$?
 
-	- 2.1.1.4 vì sao unsigned arithmetic chính là modulo $$\Large2^{N}$$?
+	- 2.1.1.4 Vòng tuần hoàn của số nguyên không dấu (Wrap-around)
 
 	- 2.1.2 signed overflow
 
@@ -658,6 +658,10 @@ flowchart TD
 
 - Là hiện tượng khi số nguyên không dấu tới quá hạn của số bit mà hệ thống cho phép. Nghĩa là, ví dụ khi hệ thống của tôi là archlinux 64bit, nó hỗ trợ 64bit thôi nếu ta vượt quá 64 bit này chẳng hạn như 65 bit đi thì lúc này số sẽ quy về 0 nghĩa là bit bên ngoài đã bị bỏ rồi 
 
+![alt text](image88.png)
+
+Trong CSAPP nói, overflow dạng ko dấu này sẽ xảy ra khi x + y − $$\Large2^{w}$$ và $$2^{w}$$ ≤ x + y < $$2^{w}$$+1 còn x + y và x + y < $$2^{w}$$ thì bình thường
+
 **2.1.1.1 modulo $$\Large2^{N}$$**
 
 - biểu thức $$\Large2^{N}$$ chúng ta đã nhắc nhiều ở mục trên rồi ví dụ nó giúp tính giá trị số bit bằng vị trí bit thì ở đây nó lại giúp chúng ta nhìn thấy hiện tượng unsigned overflow vượt quá giới hạn bit mà hệ thống hỗ trợ như thế nào, ví dụ hệ thống archlinux là 64bit đi thì ta dùng :
@@ -930,7 +934,7 @@ thì bây giờ short là 16bit = 2byte thì int nó sẽ gấp đôi short là 
 
 theo phần cứng thì nó sẽ bỏ số `1` bên ngoài đi vì vượt quá 4 bit, điều này chúng ta vừa đi qua ở mục 2.1.1.1 modulo $$\Large2^{N}$$ và 2.1.1 unsigned overflow, vậy phần này chúng ta sẽ tiếp tục soi xem cái bit `1` bị bỏ đấy nó sẽ đi về đâu? Thật ra là tất cả các bit bị loại bỏ bởi phần cứng được đi vào cờ carry CF, Carry Flag lưu bit carry bị đẩy ra khỏi bit cao nhất trong phép toán unsigned. **Thế phép toán unsigned là gì và bit carry là sao nữa?**
 
-Đầu tiên phép toán unsigned là gì, là phép toán được thực hiện trên số nguyên hệ không dấu unsigned. Nghĩa là, nó sẽ được thực hiện trên một dãy bit và khi MSB của dãy bit đó là 1 thì nó sẽ ko có dấu âm vì trên hệ không dấu unsigned là tất cả số đều là số dương hết ví dụ : 
+Đầu tiên phép toán unsigned là gì, trong mục `2.3.1 Unsigned Addition ở CSAPP trang 120` nó là phép toán được thực hiện trên số nguyên hệ không dấu unsigned. Nghĩa là, nó sẽ được thực hiện trên một dãy bit và khi MSB của dãy bit đó là 1 thì nó sẽ ko có dấu âm vì trên hệ không dấu unsigned là tất cả số đều là số dương hết ví dụ : 
 
 | 4 bit | 0000 |
 |-----|------|
@@ -1348,7 +1352,7 @@ Bạn thấy rõ ràng là từ 16 ta đếm lần lượt vị trí bit số 0 
 
 **khi nào nên dùng nó?**
 
-Chúng ta dùng nó để cho các mục đích sau thứ nhất và lớn nhất đó là dự đoán kết quả unsigned mà không cần viết binary, viết binary, lập bảng, đặc biệt tính số kết quả sau khi đã tràn bit ko dấu v.v. phép toán thì đúng nhưng khổ dâm, thực tế và hiệu suất nên khuyên nhủ dùng modulo hay C để đoán kết quả unsigned sau khi đã bị tràn, modulo linh hoạt hơn vì nó cho chúng ta tùy chỉnh bit nào với bit nào còn C thì tùy thuộc kiểu dữ liệu. Công dụng số 2 là đoán trước có bị unsigned overflow hay ko nếu N < $$\Large2^{N}$$ là ko bị nhưng mà nếu >= $$\Large2^{N}$$ chắc chắn sẽ unsigned overflow. Công dụng cuối là hiểu hành vi thật của CPU khi làm việc với phép tính kiểu này, CPU nó ko biết tmax hay tmin, như đã nói ở các chủ đề trước nó chỉ biết bit 0 và 1 rồi thôi chính cách diễn giải mới làm thay đổi value hay hành vi của bit là gì, nhưng ở đây khi dùng modulo chúng ta sẽ hiểu CPU nó chỉ lấy phần dư làm result cho các phép tính hệ ko dấu kiểu này thôi chứ ko có gì cao siêu chỉ là result = N mod $$\Large2^{N}$$ , khi ta biết cách và dự đoán được trước những gì mà CPU sẽ thực hiện hay compile v.v. thì đồng nghĩa là ta đã hiểu cách hoạt động của mấy quỷ đó rồi 
+Chúng ta dùng nó để cho các mục đích sau thứ nhất và lớn nhất đó là dự đoán kết quả unsigned mà không cần viết binary, viết binary, lập bảng, đặc biệt tính số kết quả sau khi đã tràn bit ko dấu v.v. phép toán thì đúng nhưng khổ dâm, thực tế và hiệu suất nên khuyên nhủ dùng modulo hay C để đoán kết quả unsigned sau khi đã bị tràn, modulo linh hoạt hơn vì nó cho chúng ta tùy chỉnh bit nào với bit nào còn C thì tùy thuộc kiểu dữ liệu. Công dụng số 2 là đoán trước có bị unsigned overflow hay ko nếu N < $$\Large2^{N}$$ là ko bị nhưng mà nếu >= $$\Large2^{N}$$ chắc chắn sẽ unsigned overflow. Công dụng cuối là hiểu hành vi thật của CPU khi làm việc với phép tính kiểu này, CPU nó ko biết tmax hay tmin, như đã nói ở các chủ đề trước nó chỉ biết bit 0 và 1 rồi thôi chính cách diễn giải mới làm thay đổi value hay hành vi của bit là gì, nhưng ở đây khi dùng modulo chúng ta sẽ hiểu CPU nó chỉ lấy phần dư làm result cho các phép tính hệ ko dấu kiểu này thôi chứ ko có gì cao siêu chỉ là result = N mod $$\Large2^{N}$$ , khi ta biết cách và dự đoán được trước những gì mà CPU sẽ thực hiện hay compile v.v. thì đồng nghĩa là ta đã hiểu cách hoạt động của mấy quỷ đó rồi mà
 
 **2.1.1.4 vì sao unsigned arithmetic chính là modulo $$\Large2^{N}$$?**
 
