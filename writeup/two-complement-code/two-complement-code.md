@@ -1422,7 +1422,7 @@ nhưng khi ta vượt quá hai Tmax và Tmin này nó lại là số khác. Ví 
 |------|------|
 | Tmax (lúc đầu) | 0111 |
 | vượt tmax ( +1 ) | 0001 |
-| kết quả | 1000 (số âm) |
+| kết quả | 1000 |
 
 còn về tmin :
 
