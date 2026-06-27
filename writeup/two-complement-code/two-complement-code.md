@@ -1472,6 +1472,11 @@ Chúng ta thấy kết quả đúng như kỳ vọng.
 
 **2.1.2.1 Điều kiện xảy ra signed overflow**
 
+- ở đây chúng ta có hai điều kiện . điều kiện một là `dương + dương = âm` , điều kiện hai là `âm + âm = dương`. Tại sao? khi ta có `0111 + 1 = 1000` là dương cộng dương là âm rồi, nhưng điều kiện này chỉ hiệu lực nếu một trong hai dương là Tmax của binary, ví dụ cả 2 dương ko có cái nào là Tmax của dương nhưng cộng lại là `0010 + 1 = 0011`, đấy nó vẫn là `dương + dương = dương` đấy thôi. Nên điều kiện cho việc signed overflow là phải 1 trong hai dương là Tmax của binary và dương còn lại phải <=Tmax của binary nếu dương còn lại quá Tmax sẽ tràn ra ngoài 1 carry đó là dành cho vượt miền Tmax còn vượt Tmin là `âm + âm = dương` ở đây điều kiện sẽ hiệu lực nếu bit MSB bị tràn nghĩa là khi 4bit chỉ có 1000 thì 1 là MSB nhưng nếu MSB bị tràn ví dụ `1000 + 1001 = 0001` thì đó là 1 và đúng theo điều kiện `âm + âm = dương` ngoài ra quan trọng phải nằm trong Tmax, ví dụ `âm + âm = dương` và dương chỉ hợp lệ nếu nó nằm trong miền Tmax là `0111` nếu vượt Tmax nó sẽ thành số âm
+
+> [!IMPORTANT]
+> điều kiện tràn Tmax là `dương + dương = âm`, điều kiện hiệu lực nếu một trong hai dương là Tmax của binary . Điều kiện tràn Tmin là `âm + âm = dương`, điều kiện chỉ hiệu lực nếu bit MSB bị tràn và nếu nó nằm trong miền Tmax
+
 **2.1.2.2 cờ OF (overflow flag)**
 
 - Cờ OF là 
@@ -1520,3 +1525,5 @@ Nó vẫn đúng theo kỳ vọng của chúng ta nhưng mà cờ OF sẽ là 1 
 **2.1.2.4 Vì sao CPU nó lại ko phân biệt được signed, unsigned, cách diễn giải thậm chí là âm hay dương? Và điều gì khiến nó ra màn hình trước mặt của chúng ta là số âm, và sao nó biết một chương trình đang signed để nó cho MSB = 1 theo bù hai và unsigned để nó bỏ dấu âm đi dù bản thân nó ko phân biệt và biết nổi signed và unsigned là quái gì?**
 
 **2.1.2.5 Phép đối của số bù hai**
+
+- đầu tiên phải hiều phép đối là gì đã, phép đối là 
