@@ -16,6 +16,8 @@
 
 	- 1.4.Chuyển đổi giữa unsigned và signed *(Conversions Between Signed and Unsigned, 2.2.4 trang 105,106)*
 
+	- 1.5. Cắt bớt số bit *(Truncating Numbers, 2.2.7 trang 117)*
+
 - 2.[Tràn số](#tràn-số)
 
 	- 2.1 signed overflow và unsigned overflow
@@ -39,6 +41,8 @@
 	- 2.1.2.3 Vì sao MSB thay đổi nhưng không phải nguyên nhân của signed overflow?
 
 	- 2.1.2.4 Vì sao CPU nó lại ko phân biệt được signed, unsigned, cách diễn giải thậm chí là âm hay dương? Và điều gì khiến nó ra màn hình trước mặt của chúng ta là số âm, và sao nó biết một chương trình đang signed để nó cho MSB = 1 theo bù hai và unsigned để nó bỏ dấu âm đi dù bản thân nó ko phân biệt và biết nổi signed và unsigned là quái gì?
+
+	- 2.1.2.5 Phép đối của số bù hai *(Two’s-Complement Negation, 2.3.3 trang 131)*
 
 ---
 
@@ -627,6 +631,8 @@ bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
 
 > Phần này chủ yếu là lịch sử của bù hai
 </details>
+
+**1.5. Cắt bớt số bit**
 
 ---
 
@@ -1512,3 +1518,5 @@ Nó vẫn đúng theo kỳ vọng của chúng ta nhưng mà cờ OF sẽ là 1 
 **2.1.2.3 Vì sao MSB thay đổi nhưng không phải nguyên nhân của signed overflow?**
 
 **2.1.2.4 Vì sao CPU nó lại ko phân biệt được signed, unsigned, cách diễn giải thậm chí là âm hay dương? Và điều gì khiến nó ra màn hình trước mặt của chúng ta là số âm, và sao nó biết một chương trình đang signed để nó cho MSB = 1 theo bù hai và unsigned để nó bỏ dấu âm đi dù bản thân nó ko phân biệt và biết nổi signed và unsigned là quái gì?**
+
+**2.1.2.5 Phép đối của số bù hai**
