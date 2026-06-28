@@ -632,19 +632,49 @@ bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
 
 **1.5. Cắt bớt số bit**
 
+- Khi chuyển từ kiểu có nhiều bit sang kiểu ít bit hơn, các bit cao sẽ bị cắt bỏ, chỉ giữ lại các bit thấp. Ví dụ `int (32-bit)` -> `short (16-bit)` chỉ giữ lại 16 bit thấp, 16 bit cao bị loại bỏ.
+
+> Ví dụ với C, bạn có thể bỏ qua nếu ko quan tâm
+
+<details>
+	<summary>ví dụ C</summary>
+
+```c
+#include <stdio.h>
+
+int main(void){
+	unsigned int a = 0xabcdef12;
+	printf("size int = %d\nbiến a = 0x%x\nsize short = %d\nbiến a sau khi ép = 0x%x\n",
+			sizeof(int),
+			a, //lúc đầu là 4byte
+			sizeof(short),
+			(unsigned short)a //lúc sau là 2 byte
+			);
+	return 0;
+}
+```
+
+> gcc -o test_type test_type.c ; ./test_type
+
+![alt text](image94.png)
+
+đúng theo kỳ vọng của chúng ta
+
+</details>
+
 **1.6. Phép đối của số bù hai**
 
 ![alt text](image93.png)
 
 > trích từ trang 189 tại phần Two’s-Complement Negation, mục 2.3.3
 
-- đầu tiên phải hiều **phép đối là gì** đã, phép đối là những số đối kiểu như khác dấu, ví dụ số 1 là dương nhưng -1 vẫn là phát âm `một` nhưng nó là âm đó là số đối của 1, số đối là cái này là dương cái kia là âm ví dụ ta có bảng như thế này :
+- **phép đối là gì**, phép đối là những số kiểu khác dấu, ví dụ số 1 là dương nhưng -1 là âm đó là số đối của 1
 
 | số dương (đối của âm) | 1 | 2 | 3 | 4 | 5 |
 |-----------------------|---|---|---|---|---|
 | số âm (đối của dương) | -1 | -2 | -3 | -4 | -5 |
 
-đó ta thấy nó đối nghịch nhau, âm đối dương, dương đối âm đó gọi là phép đối. Điều đặc biệt là lấy hai số đối cộng lại kết quả là `0` dương nhưng nó ko góp gì ở dãy số, ví dụ `1 + (-1) = 0` , `2 + (-2) = 0` v.v. đó là tính chất quan trọng của phép đối. Còn **phép đối của số bù hai là gì**, CPU nó ko biết dấu âm hay dương, nó chỉ biết bit. Điều quan trọng ta thường nhắc lại nhiều lần, nên nó sẽ ko lưu dâu âm như toán học thay vào đó nó lấy số đối bằng cách đảo bit `0->1` ,`1->0` và cộng thêm một. Công thức như sau `-x = ~x + 1` ví dụ khi có 4bit và bây giờ ta muốn chuyển giá trị số nguyên là `5` sang hệ 4bit này kết quả sẽ là `0101` nhưng bây giờ ta muốn bit này là số đối của `5` nghĩa là `-5` thì ta dùng `-x = ~0101 + 1` kết quả là `1011` là `-5`
+Điều đặc biệt là lấy hai số đối cộng lại kết quả là `0` dương nhưng nó ko góp gì ở dãy số, ví dụ `1 + (-1) = 0` , `2 + (-2) = 0` v.v. đó là tính chất quan trọng của phép đối. Còn **phép đối của số bù hai là gì**, CPU nó ko biết dấu âm hay dương, nó chỉ biết bit. Điều quan trọng ta thường nhắc lại nhiều lần, nên nó sẽ ko lưu dâu âm như toán học thay vào đó nó lấy số đối bằng cách đảo bit `0->1` ,`1->0` và cộng thêm một. Công thức như sau `-x = ~x + 1` ví dụ khi có 4bit và bây giờ ta muốn chuyển giá trị số nguyên là `5` sang hệ 4bit này kết quả sẽ là `0101` nhưng bây giờ ta muốn bit này là số đối của `5` nghĩa là `-5` thì ta dùng `-x = ~0101 + 1` kết quả là `1011` là `-5`
 
 ![alt text](image92.png)
 
