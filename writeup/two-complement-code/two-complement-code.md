@@ -648,6 +648,11 @@ bỏ bit ngoài đi, chúng ta có kết quả là 0. Đó là bù hai
 
 ![alt text](image92.png)
 
+Ý tưởng cốt lõi của mã bù hai là `a - b = a + (-b) = a + (~b + 1)`
+
+> [!IMPORTANT]
+> CPU nó luôn làm phép cộng nó ko làm phép trừ như `a - b`, nó cũng chẳng có khái niệm nhân, chia hay gì cả, điều nó thực sự làm là các phép toán bit như xor, and dịch trái hay phải v.v.. để ra kết quả tựa như toán học 
+
 > phần ví dụ với C, bạn có thể bỏ qua nếu ko quan tâm tới
 
 <details>
