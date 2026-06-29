@@ -1586,7 +1586,7 @@ vào đó ni và thực thi xong `add edi, 0x1` :
 
 ![alt text](image96.png)
 
-theo như kỳ vọng nên OF bật khi kết quả toán học $$large\notin$$ [Tmax, Tmin]
+theo đúng kỳ vọng nên OF bật khi kết quả toán học $$\large\notin$$ [Tmax, Tmin]
 
 </details>
 </details>
