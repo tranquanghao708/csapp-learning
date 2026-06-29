@@ -1523,7 +1523,7 @@ Chúng ta thấy kết quả đúng như kỳ vọng.
 
 **2.1.2.1 cờ OF (overflow flag)**
 
-- Cờ OF = 1 là trạng thái kết quả toán học ko nằm trong Wrap-around signed binary. Ví dụ, `0111 + 0001 = 1000` toán học `7 + 1 = 8` nhưng $$\Large8 \notin [-8, 7]$$ -> OF = 1, ví dụ 2 là `1000 + 1111 = 0111` toán học `-8 + -1 = -9` nhưng $$\Large-9 \notin [-8, 7]$$
+- Cờ OF = 1 là trạng thái kết quả toán học ko nằm trong Wrap-around signed binary. Ví dụ, `0111 + 0001 = 1000` toán học `7 + 1 = 8` nhưng $$8 \notin [-8, 7]$$ -> OF = 1, ví dụ 2 là `1000 + 1111 = 0111` toán học `-8 + -1 = -9` nhưng $$-9 \notin [-8, 7]$$ -> OF = 1, ví dụ 3 là `0011 + 1000 = 1011` toán học `3 + (-8) = -5` nhưng $$-5 \in [-8, 7]$$ -> OF = 0
 
 <details>
 	<summary>Áp dụng thử vào C</summary>
